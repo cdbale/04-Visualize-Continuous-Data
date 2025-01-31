@@ -4,18 +4,18 @@ subtitle: "MKTG 411 Marketing Analytics"
 output: 
   ioslides_presentation:
     widescreen: true
-    css: ../style.css
+    css: style.css
 ---
 
 ## Marketing Analytics Process
 
 <center>
-![](../../Figures/process_visualize.png){width=900px}
+![](Figures/process_visualize.png){width=900px}
 </center>
 
 ---
 
-![](../../Figures/hex_dplyr-ggplot2.png){width=900px}
+![](Figures/hex_dplyr-ggplot2.png){width=900px}
 
 ## Continuous Data
 
@@ -32,7 +32,7 @@ How we summarize depends on whether the data is *discrete* or **continuous**.
 ---
 
 <center>
-![](../../Figures/monsters_discrete-continuous.png){width=700px}
+![](Figures/monsters_discrete-continuous.png){width=700px}
 </center>
 
 ---
@@ -272,7 +272,7 @@ rating_data
 ---
 
 <center>
-![](../../Figures/monsters_lubridate.png){width=800px}
+![](Figures/monsters_lubridate.png){width=800px}
 </center>
 
 ---
@@ -394,7 +394,7 @@ customer_data |>
 ---
 
 <center>
-![](../../Figures/monsters_ggplot2-masterpiece.png){width=700px}
+![](Figures/monsters_ggplot2-masterpiece.png){width=700px}
 </center>
 
 ## Wrapping Up

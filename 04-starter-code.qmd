@@ -4,23 +4,220 @@ format: docx
 editor: visual
 ---
 
-## Quarto
+## Lecture 04 Notes
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+### Continuous Data
 
 ```{r}
-1 + 1
-```
 
-You can add options to executable code like this
+# Load the tidyverse.
+
+library(tidyverse)
+```
 
 ```{r}
-#| echo: false
-2 * 2
+
+# Read in the customer data (make sure it's in your working directory).
+
+customer_data <- read_csv("customer_data.csv", show_col_types = FALSE)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Summarize Continuous Data
+
+```{r}
+
+# This code calculates the mean income, and displays it as a data frame with one column and one value.
+
+customer_data |>
+  summarize(avg_income = mean(income))
+```
+
+```{r}
+
+# This code displays a data frame with two columns, one for average income and one for average credit.
+
+customer_data |>
+  summarize(
+    avg_income = mean(income),
+    avg_credit = mean(credit)
+  )
+```
+
+### Your Turn!
+
+```{r}
+
+# Write code that uses the customer data and the filter() and summarize() functions to display a data frame with the minimum, maximum, and median income for married customers.
+
+```
+
+### Visualize Continuous Data
+
+```{r message=FALSE}
+
+# This code creates a histogram of the incomes from the customer data.
+
+customer_data |> 
+  ggplot(aes(x = income)) +
+  geom_histogram()
+```
+
+```{r}
+
+# This code creates a scatterplot with income on the x-axis and credit on the      y-axis.
+
+customer_data |> 
+  ggplot(aes(x = income, y = credit)) +
+  geom_point()
+```
+
+```{r warning=FALSE}
+
+# This code creates a scatterplot with star_rating on the x-axis and income on the y-axis.
+
+customer_data |> 
+  ggplot(aes(x = star_rating, y = income)) +
+  geom_point()
+```
+
+```{r message=FALSE}
+
+# This code creates an improved version of the last plot, with jittered and slightly transparent points, along with a trend line for each region.
+
+customer_data |> 
+  drop_na(star_rating) |> 
+  ggplot(aes(x = star_rating, y = income)) +
+  geom_jitter(size = 3, alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~ region) +
+  labs(
+    title = "Relationship Between Star Rating and Income by Region",
+    x = "Star Rating",
+    y = "Income"
+  )
+
+```
+
+### Summarize Continuous and Discrete Data
+
+```{r}
+
+# This code displays a data frame with the number, average income, and average credit for each gender in the customer data.
+
+customer_data |>
+  group_by(gender) |>
+  summarize(
+    n = n(),
+    avg_income = mean(income),
+    avg_credit = mean(credit)
+  )
+```
+
+```{r}
+
+# This code shows that group_by(gender) |> summarize (n = n()) does the same thing as count(gender).
+
+customer_data |>
+  group_by(gender) |>
+  summarize(
+    n = n()
+  )
+```
+
+```{r}
+
+# This code shows that group_by(gender) |> summarize (n = n()) does the same thing as count(gender).
+
+customer_data |>
+  count(gender)
+```
+
+```{r}
+
+# This code groups by gender AND region and displays average incomes and credit for each combination. Then the rows are arranged from the group with the highest average income to the lowest.
+
+customer_data |>
+  group_by(gender, region) |>
+  summarize(
+    n = n(),
+    avg_income = mean(income),
+    avg_credit = mean(credit)
+  ) |> 
+  arrange(desc(avg_income))
+```
+
+```{r}
+
+# This code displays the top three customers with the highest income in each gender and region combination.
+
+customer_data |>
+  group_by(gender, region) |>
+  slice_max(income, n = 3)
+```
+
+### Time Series Data
+
+```{r}
+
+# This code uses the lubridate package to wrangle the review times into a more useable form, and saves them along with the star rating as rating_data.
+
+rating_data <- customer_data |> 
+  drop_na(star_rating) |> 
+  select(review_time, star_rating) |> 
+  mutate(review_time = mdy(review_time))
+
+rating_data
+```
+
+```{r}
+
+# This code produces a line plot of the star rating over time.
+
+rating_data |> 
+  ggplot(aes(x = review_time, y = star_rating)) +
+  geom_line()
+```
+
+### Visualize Grouped Summaries
+
+```{r}
+
+# This code displays the average star rating for each year as a time series.
+
+rating_data |> 
+  mutate(review_year = year(review_time)) |> 
+  group_by(review_year) |> 
+  summarize(avg_star_rating = mean(star_rating)) |> 
+  ggplot(aes(x = review_year, y = avg_star_rating)) +
+  geom_line()
+```
+
+### Visualize Continuous and Discrete Data
+
+```{r}
+
+# This code creates boxplots that show the distribution of income for each gender in the data.
+
+customer_data |> 
+  ggplot(aes(x = income, y = gender)) +
+  geom_boxplot()
+```
+
+### Your Turn!
+
+```{r}
+
+# Create a box plot of the distribution of credit scores for the married vs. unmarried customers. Include labels and a title.
+
+```
+
+### Another Option
+
+```{r}
+
+# This code creates density plots that show the distribution of income for each gender in the data.
+
+customer_data |> 
+  ggplot(aes(x = income, fill = gender)) +
+  geom_density(alpha = 0.5)
+```

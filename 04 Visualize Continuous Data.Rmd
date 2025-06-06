@@ -417,12 +417,12 @@ Suppose your manager at Patagonia wants you to visualize the relationship betwee
 
 ## Exercise 4
 
-In RStudio on Posit Cloud, create a new R script and do the following.
+In RStudio, create a new Quarto doc and do the following.
 
 1. Load the tidyverse.
 2. Import and join `customer_data` and `store_transactions`.
 3. Explore this combined dataset using the functions we've covered.
 4. Provide at least one interesting numeric summary and one interesting visualization that include continuous variables.
 5. Practice good coding conventions as discussed.
-6. Export the R script and upload to Canvas.
+6. Render the Word doc and upload to Canvas.
 

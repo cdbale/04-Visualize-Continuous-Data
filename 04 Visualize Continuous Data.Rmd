@@ -16,6 +16,7 @@ output:
 ---
 
 ![](Figures/hex_dplyr-ggplot2.png){width=900px}
+
 ## Motivating Example
 
 Your manager is impressed with what you were able to come with to display categorical variables from the data in a clear and polished way. However, she is also interested in the continuous data, like the income and credit scores of the customers, as well as the impact that the categorical data has on these numbers. What kind of graphs or charts could you create that could communicate these ideas?
@@ -345,8 +346,6 @@ customer_data |>
   ggplot(aes(x = income, y = gender)) +
   geom_boxplot()
 ```
-
----
 
 ## Your Turn!
 

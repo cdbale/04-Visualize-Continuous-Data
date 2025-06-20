@@ -221,3 +221,16 @@ customer_data |>
   ggplot(aes(x = income, fill = gender)) +
   geom_density(alpha = 0.5)
 ```
+
+### Live Coding
+
+Suppose your manager at Patagonia wants you to visualize the relationship between income and credit among the customers, along with the effect that region and gender may have on this relationship. How can we accomplish this? Remember, we need to include intentional labels and colors.
+
+```{r}
+
+```
+
+
+
+
+

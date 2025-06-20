@@ -16,6 +16,9 @@ output:
 ---
 
 ![](Figures/hex_dplyr-ggplot2.png){width=900px}
+## Motivating Example
+
+Your manager is impressed with what you were able to come with to display categorical variables from the data in a clear and polished way. However, she is also interested in the continuous data, like the income and credit scores of the customers, as well as the impact that the categorical data has on these numbers. What kind of graphs or charts could you create that could communicate these ideas?
 
 ## Continuous Data
 
@@ -50,7 +53,7 @@ customer_data <- read_csv("customer_data.csv")
 ```
 
 ```{r echo=FALSE}
-customer_data <- read_csv(here::here("Data", "customer_data.csv"))
+customer_data <- read_csv("customer_data.csv")
 ```
 
 ## Summarize Continuous Data
@@ -79,13 +82,31 @@ customer_data |>
   )
 ```
 
+## Your Turn!
+
+Use the customer data and the filter() and summarize() functions to display a data frame with the minimum, maximum, and median income for married customers.
+
+## Solution
+
+```{r}
+customer_data |>
+  filter(married == 'Yes')|>
+  summarize(
+    min_income = min(income),
+    max_income = max(income),
+    median_income = median(income)
+  )
+
+```
+
+
 ## Visualize Data
 
-{ggplot2} provides a consistent **grammar of graphics** built with **layers**.
+Recall that {ggplot2} provides a consistent **grammar of graphics** built with **layers**.
 
 1. Data – Data to visualize.
-2. Aesthetics – Mapping graphical elements to data.
-3. Geometry – Or "geom," the graphic representing the data.
+2. Aesthetics – Or "aes," mapping graphical elements to data.
+3. Geometry – Or "geom," the kind of graph representing the data.
 4. Facets, Labels, Scales, etc.
 
 ## Visualize Continuous Data
@@ -327,69 +348,48 @@ customer_data |>
 
 ---
 
+## Your Turn!
+
+Create a box plot of the distribution of credit scores for the married vs. unmarried customers. Include labels and a title!
+
+## Solution
+
+```{r eval=FALSE}
+
+customer_data |> 
+  ggplot(aes(x = credit, y = married)) +
+  geom_boxplot() +
+  labs(x = 'Credit Score', y = 'Marital Status', 
+       title = 'Distribution of Credit Scores', 
+       subtitle = 'Married vs. Unmarried Patagonia Customers')
+
+```
+
+---
+
+```{r echo=FALSE}
+
+customer_data |> 
+  ggplot(aes(x = credit, y = married)) +
+  geom_boxplot() +
+  labs(x = 'Credit Score', y = 'Marital Status', 
+       title = 'Distribution of Credit Scores', 
+       subtitle = 'Married vs. Unmarried Patagonia Customers')
+
+```
+
+## Another Option
+
 ```{r}
 customer_data |> 
   ggplot(aes(x = income, fill = gender)) +
   geom_density(alpha = 0.5)
 ```
 
-## Embracing the Grammar of Graphics
+## Live Coding
 
-Visualize the relationship between `income` and `credit`.
+Suppose your manager at Patagonia wants you to visualize the relationship between income and credit among the customers, along with the effect that region and gender may have on this relationship. How can we accomplish this? Remember, we need to include intentional labels and colors.
 
-- Income is hard to read, let's recode it.
-- Map `gender` to the `color` argument.
-- Modify the `size` and `alpha` arguments.
-- Add `geom_smooth()`.
-- Can we get facets for each combination of `region` and `gender`?
-- What happens when the `color` aesthetic is set in `geom_point()`?
-- Add labels and modify the scale colors.
-- Remove the gray default background by using a different theme. Try `theme_minimal()`.
-- The legend for the scale is redundant, let's modify it using the `legend.position` argument in `theme()`.
-
----
-
-```{r eval=FALSE}
-customer_data |> 
-  mutate(income = income / 1000) |> 
-  ggplot(aes(x = income, y = credit)) +
-  geom_point(size = 3, alpha = 0.5, aes(color = gender, )) +
-  geom_smooth(method = "lm", se = FALSE) +
-  facet_grid(gender ~ region) +
-  labs(
-    title = "Income and Credit by Region and Gender",
-    x = "Income (in Thousands)",
-    y = "Credit"
-  ) +
-  scale_color_manual(
-    name = "Gender",
-    values = c("violet", "purple", "turquoise")
-  ) +
-  theme_minimal() +
-  theme(legend.position = "none")
-```
-
----
-
-```{r echo=FALSE}
-customer_data |> 
-  mutate(income = income / 1000) |> 
-  ggplot(aes(x = income, y = credit)) +
-  geom_point(size = 3, alpha = 0.5, aes(color = gender, )) +
-  geom_smooth(method = "lm", se = FALSE) +
-  facet_grid(gender ~ region) +
-  labs(
-    title = "Income and Credit by Region and Gender",
-    x = "Income (in Thousands)",
-    y = "Credit"
-  ) +
-  scale_color_manual(
-    name = "Gender",
-    values = c("violet", "purple", "turquoise")
-  ) +
-  theme_minimal() +
-  theme(legend.position = "none")
-```
 
 ---
 
@@ -417,12 +417,12 @@ customer_data |>
 
 ## Exercise 4
 
-In RStudio on Posit Cloud, create a new R script and do the following.
+In RStudio, create a new Quarto doc and do the following.
 
 1. Load the tidyverse.
 2. Import and join `customer_data` and `store_transactions`.
 3. Explore this combined dataset using the functions we've covered.
 4. Provide at least one interesting numeric summary and one interesting visualization that include continuous variables.
 5. Practice good coding conventions as discussed.
-6. Export the R script and upload to Canvas.
+6. Render the Word doc and upload to Canvas.
 

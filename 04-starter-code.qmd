@@ -12,14 +12,13 @@ editor: visual
 
 # Load the tidyverse.
 
-library(tidyverse)
+
 ```
 
 ```{r}
 
 # Read in the customer data (make sure it's in your working directory).
 
-customer_data <- read_csv("customer_data.csv", show_col_types = FALSE)
 ```
 
 ### Summarize Continuous Data
@@ -64,14 +63,14 @@ customer_data |>
 
 ```{r}
 
-# This code creates a scatterplot with income on the x-axis and credit on the      y-axis.
+# This code creates a scatterplot with income on the x-axis and credit on the y-axis.
 
 customer_data |> 
   ggplot(aes(x = income, y = credit)) +
   geom_point()
 ```
 
-```{r warning=FALSE}
+```{r}
 
 # This code creates a scatterplot with star_rating on the x-axis and income on the y-axis.
 
@@ -211,7 +210,7 @@ customer_data |>
 
 ```
 
-### Another Option
+### Another Option: Density Plots
 
 ```{r}
 
@@ -219,18 +218,16 @@ customer_data |>
 
 customer_data |> 
   ggplot(aes(x = income, fill = gender)) +
-  geom_density(alpha = 0.5)
+  geom_density(alpha = 0.5) +
+  labs(x = "Income",
+       y = "Density",
+       title = "Income Distribution by Gender")
 ```
 
 ### Live Coding
 
-Suppose your manager at Patagonia wants you to visualize the relationship between income and credit among the customers, along with the effect that region and gender may have on this relationship. How can we accomplish this? Remember, we need to include intentional labels and colors.
+Suppose your client, Patagonia, is interested in interested in increasing customer engagement by offering a promotion to customers who leave a review. Can you uncover any variables that are related to whether a customer is more or less likely to leave a review?
 
 ```{r}
 
 ```
-
-
-
-
-

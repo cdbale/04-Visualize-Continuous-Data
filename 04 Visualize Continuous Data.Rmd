@@ -19,7 +19,7 @@ output:
 
 ## Motivating Example
 
-Your manager is impressed with what you were able to come with to display categorical variables from the data in a clear and polished way. However, she is also interested in the continuous data, like the income and credit scores of the customers, as well as the impact that the categorical data has on these numbers. What kind of graphs or charts could you create that could communicate these ideas?
+Patagonia management was pleased with your previous report on customers in the South region. Now, they have requested that you provide further analysis of the income and credit scores of their customers. What kind of graphs or charts would provide good visualizations of these variables?
 
 ## Continuous Data
 
@@ -49,12 +49,9 @@ library(tidyverse)
 
 What variables are *continuous*? What are their data types?
 
-```{r eval=FALSE}
-customer_data <- read_csv("customer_data.csv")
-```
-
-```{r echo=FALSE}
-customer_data <- read_csv("customer_data.csv")
+```{r}
+customer_data <- read_csv("customer_data.csv", show_col_types = FALSE)
+glimpse(customer_data)
 ```
 
 ## Summarize Continuous Data
@@ -87,9 +84,9 @@ customer_data |>
 
 Use the customer data and the filter() and summarize() functions to display a data frame with the minimum, maximum, and median income for married customers.
 
-## Solution
+## Output
 
-```{r}
+```{r, echo=FALSE}
 customer_data |>
   filter(married == 'Yes')|>
   summarize(
@@ -97,9 +94,19 @@ customer_data |>
     max_income = max(income),
     median_income = median(income)
   )
-
 ```
 
+## Code Solution
+
+```{r, eval=FALSE}
+customer_data |>
+  filter(married == 'Yes')|>
+  summarize(
+    min_income = min(income),
+    max_income = max(income),
+    median_income = median(income)
+  )
+```
 
 ## Visualize Data
 
@@ -158,12 +165,14 @@ customer_data |>
 
 ---
 
-What do we do if there is **overplotting**? There’s a geom for that (`geom_jitter()`).
+What do we do if there is **overplotting**? There’s a geom for that (`geom_jitter()`). 
+
+Let's do the following:
 
 - Drop the missing data before plotting.
 - Play with the `size` and `alpha` geom arguments.
 - Add a `geom_smooth()` layer.
-- How could we look at this same plot by `region`?
+- Facet-wrap the plot by `region`.
 - Complete the plot with labels.
 
 ---
@@ -305,6 +314,14 @@ rating_data |>
   geom_line()
 ```
 
+## Wait...Why Does This Plot Still Look Bad?
+
+```{r, echo=FALSE}
+rating_data |> 
+  ggplot(aes(x = review_time, y = star_rating)) +
+  geom_line()
+```
+
 ## Visualize Grouped Summaries
 
 Let's summarize the data by a period of time and then plot the time series.
@@ -351,20 +368,7 @@ customer_data |>
 
 Create a box plot of the distribution of credit scores for the married vs. unmarried customers. Include labels and a title!
 
-## Solution
-
-```{r eval=FALSE}
-
-customer_data |> 
-  ggplot(aes(x = credit, y = married)) +
-  geom_boxplot() +
-  labs(x = 'Credit Score', y = 'Marital Status', 
-       title = 'Distribution of Credit Scores', 
-       subtitle = 'Married vs. Unmarried Patagonia Customers')
-
-```
-
----
+## Desired Output
 
 ```{r echo=FALSE}
 
@@ -374,21 +378,45 @@ customer_data |>
   labs(x = 'Credit Score', y = 'Marital Status', 
        title = 'Distribution of Credit Scores', 
        subtitle = 'Married vs. Unmarried Patagonia Customers')
-
 ```
 
-## Another Option
+## Code Solution
 
-```{r}
+```{r eval=FALSE}
+
+customer_data |> 
+  ggplot(aes(x = credit, y = married)) +
+  geom_boxplot() +
+  labs(x = 'Credit Score', y = 'Marital Status', 
+       title = 'Distribution of Credit Scores', 
+       subtitle = 'Married vs. Unmarried Patagonia Customers')
+```
+
+## We Can Also Use Density Plots
+
+```{r, eval=FALSE}
 customer_data |> 
   ggplot(aes(x = income, fill = gender)) +
-  geom_density(alpha = 0.5)
+  geom_density(alpha = 0.5) +
+  labs(x = "Income",
+       y = "Density",
+       title = "Income Distribution by Marital Status")
+```
+
+---
+
+```{r, echo=FALSE}
+customer_data |> 
+  ggplot(aes(x = income, fill = gender)) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Income",
+       y = "Density",
+       title = "Income Distribution by Marital Status")
 ```
 
 ## Live Coding
 
-Suppose your manager at Patagonia wants you to visualize the relationship between income and credit among the customers, along with the effect that region and gender may have on this relationship. How can we accomplish this? Remember, we need to include intentional labels and colors.
-
+Suppose your client, Patagonia, is interested in interested in increasing customer engagement by offering a promotion to customers who leave a review. Can you uncover any variables that are related to whether a customer is more or less likely to leave a review?
 
 ---
 

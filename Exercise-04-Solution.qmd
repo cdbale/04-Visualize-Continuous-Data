@@ -19,11 +19,11 @@ Five points total, one point each for:
 
 \- Loading the tidyverse.
 
-\- Importing and joining customer data and store_transactions.
+\- Provide at least one numeric summary.
 
-\- Using the functions we've covered to summarize the data as specified.
+\- Provide at least one visualization.
 
-\- Following good coding conventions (provide feedback on this point).
+\- Following good coding conventions (piping, comments, etc.).
 
 \- Submitting a rendered Word doc.
 
@@ -63,19 +63,13 @@ crm_data |>
 # At least one interesting visualization.
 
 crm_data |> 
-  mutate(age = 2021 - birth_year) |> 
-  ggplot(aes(x = dec_2018, y = age)) +
-  geom_jitter(size = 3, alpha = 0.5, aes(color = gender)) +
-  geom_smooth(method = "lm", se = FALSE) + 
+  mutate(age = 2026 - birth_year) |> 
+  ggplot(aes(x = age, y = dec_2018)) +
+  geom_jitter(size = 2, alpha = 0.5) +
   facet_grid(~ region) +
   labs(
-    title = "December 2018 Purchases by Age, Region, and Gender",
-    x = "December 2018 Purchases",
-    y = "Age"
-  ) +
-  scale_color_manual(
-    name = "Gender",
-    values = c("violet", "purple", "turquoise")
-  )
+    title = "December 2018 Purchases by Age and Region",
+    x = "Age",
+    y = "December 2018 Purchases")
 
 ```

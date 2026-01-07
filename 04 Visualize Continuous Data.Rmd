@@ -1,6 +1,6 @@
 ---
 title: "Visualize Continuous Data"
-subtitle: "MKTG 411 Marketing Analytics"
+subtitle: "MCB Consulting Group (MKTG 411)"
 output: 
   ioslides_presentation:
     widescreen: true

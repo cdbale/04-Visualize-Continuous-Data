@@ -1,0 +1,36 @@
+LECTURE 04 — COMPLETED WORK
+Entries are appended after verification; pending decisions remain in Chat To Do.
+
+A1. Synthesize and rename the student-facing exercise.
+Target: Exercise-03-Instructions.txt and concluding exercise in the Rmd.
+Evidence: saved Exercise 3 asks for a discrete regional count table/chart;
+Exercise 4 asks for combined customer/transaction data and continuous analysis.
+Change: one regional client report with a discrete count table/chart, a regional
+summary of a chosen continuous characteristic and December 2018 purchases,
+a continuous-variable chart, and an integrated finding/limitation. Describe
+deliverables without prescribing function names or an operation sequence.
+Use both supplied data files, preserve Word/Quarto and coding requirements,
+and keep the exercise last. This is Exercise 3; lecture numbering remains 04.
+Effect: solution/rubric and Canvas propagation are proposed separately below.
+Decision: Approve — explicitly requested. Status: Verified.
+
+A2. Add Today's Learning Goals immediately after the title.
+Target: start of Rmd (there is no opening spiritual block).
+Evidence: required slide is absent. Standing skill requirement applies when
+editing slides. Goals cover summaries, plot choice, dates/time aggregation,
+and supported regional interpretation. No new concept is added.
+Effect: adds one slide before any approved condensation.
+Decision: Approve — standing user-requested requirement. Status: Verified.
+
+Verification 2026-09-16: inspected source and diff; matching TXT/Rmd exercise
+text confirmed automatically; goals are the first content slide and Exercise 3
+is the concluding activity. All referenced slide image paths exist.
+Both datasets have 10,531 unique matching customer IDs and complete income,
+credit and Dec 2018 counts. Independently computed regional mean income and
+purchase activity and discrete counts from the CSVs to confirm feasibility.
+Students have the required joins/counts/charts from lectures 02-03 and grouped
+summaries/continuous plots in this lecture. No new analytical function required.
+Rscript is present but tidyverse is not available in its default sandbox library;
+no claim of executing an R solution is made. No slides or solution were rendered.
+The separate old solution/rubric and Canvas text remain pending suggestions.
+

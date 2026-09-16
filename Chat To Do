@@ -1,0 +1,188 @@
+LECTURE 04 REVIEW — 2026-09-16
+
+SCOPE
+User authorized: review with condensation suggestions; synthesize the saved
+Exercise 3 with this lecture's exercise and rename the exercise Exercise 3.
+New suggestions below remain pending. No rendering is authorized.
+
+INVENTORY AND EVIDENCE
+Repository root verified with git rev-parse: this 04-Visualize-Continuous-Data
+directory contains its own .git and authoritative 04 Visualize Continuous Data.Rmd.
+Branch main tracks origin/main, https://github.com/cdbale/04-Visualize-Continuous-Data.git.
+Initial HEAD ffeb86a; initial working tree clean. No applicable AGENTS.md,
+README, build script, or GitHub workflow found in this lecture repository.
+Rmd uses ioslides_presentation, widescreen, style.css and six Figures assets.
+Existing named HTML and index.html: 48 displayed slides including the title;
+the extra slide tag is the ioslides template. Neither will be regenerated.
+Exercise source: final Rmd section, Exercise-03-Instructions.txt, and
+Exercise-04-Solution.qmd with an existing five-point rubric. The DOCX is an
+existing generated solution. Exercise/ contains two plot PNGs and duplicate
+CSVs; both duplicate CSVs match their root copies by SHA256.
+Starter: 04-starter-code.qmd. Data: customer_data.csv and store_transactions.csv,
+each 10,531 unique customer IDs, identical ID sets, no missing income, credit,
+or dec_2018. Monthly purchases cover Jan 2005-Dec 2018; these are historical data.
+Previous sources reviewed: lecture 02 (imports, transformations, joins, pipes,
+Quarto-to-Word setup) and lecture 03 (counts, cross-tabs, proportions, facets,
+labels, missingness, factors/text). Lecture 03's completed log confirms the
+Exercise 3 brief was moved here and its Canvas/solution updates deferred.
+
+Canvas inspected read-only through Chrome extension: Fall 2026 MKTG 411-001,
+course 38688, with section 002 overrides. Exercise 3 is assignment 1452125;
+its description exactly matches the saved discrete-data brief. Five points;
+due Sep 24 at 2pm / 3:30pm, closes Oct 1. Grade Exercise 3 is 1452143 and
+already says the rubric is in Exercise-03-Solution.qmd. Preserve these settings.
+Module links: Exercise 3 item 3180612; Grade Exercise 3 item 3180613;
+Exercise-03-Solution.qmd item 3180614; Exercise-04-Solution.qmd item 3180621;
+04-starter-code.qmd item 3180617. Their placement follows due-date sessions,
+so do not infer assignment identity solely from the nearby lecture heading.
+04-Slides links to https://cdbale.github.io/04-Visualize-Continuous-Data/#1.
+Opened that link: live slides still end with Exercise 4 and lack learning goals.
+
+AUTHORIZED WORK
+
+A1 and A2 are Verified and recorded in Chat Completed.
+
+PENDING NUMBERED SUGGESTIONS
+For each item, record Approve, Alter, or Reject. Silence is not approval.
+Locations below use section names and original source lines, before edits.
+
+1. Condense repeated orientation and summary setup (Rmd lines 10-81).
+Evidence: process and package artwork occupy separate slides; library/import
+occupy separate slides; the two-variable summary has a separate prompt slide.
+Combine the two orientation images; combine library/import with a compact
+glimpse output; move the two-variable prompt and statistics list onto its
+worked example. Preserve the motivating scenario, continuous/discrete
+distinction, single-mean example, and summarize-versus-mutate discussion.
+Expected saving: about three slides; no change in conceptual emphasis.
+Effect: starter order should follow item 8; learning goals and exercise remain.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+2. Condense the count-equivalence explanation (Rmd lines 224-246).
+Evidence: the wrapper explanation and two identical count outputs use three
+slides. Present group_by(gender) |> summarize(n = n()) and count(gender)
+together with one shared output and a one-sentence explanation.
+Expected saving: two slides; retain the earlier mean-by-group example,
+multiple grouping variables, and grouped slice_max example as taught concepts.
+Effect: coordinate corrected grouping wording in item 6 and starter item 8.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+3. Shorten the time-series sequence without removing dates or aggregation
+(Rmd Time Series Data through Visualize Grouped Summaries, lines 272-347).
+Evidence: raw-date code/output are separate, the parsed-date line plot repeats
+on consecutive slides, the lubridate artwork is standalone, and annual code
+and output are separate. Combine the raw-date code and diagnostic plot;
+retain parsing and a compact date preview; fold the artwork into that slide;
+show the parsed-but-unsummarized plot once with its diagnostic question;
+show annual aggregation code with its result at a readable size.
+Expected saving: about four slides. Keep the distinction between parsing dates
+and choosing the observational time unit. No concept removed.
+Effect: preserve mdy(), year(), geom_line(), grouped means in starter item 8.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+4. Combine three short plotting examples with their outputs (Rmd histogram
+lines 120-135, income boxplot lines 349-365, density lines 395-415).
+Evidence: each short pipeline occupies a slide before a separate output.
+Use compact code beside/above a readable chart. Keep density as an alternative
+to boxplots, and retain the longer jitter/smooth/facet code and output on
+separate slides. Expected saving: three slides; no change in emphasis.
+Effect: density title correction in item 6; source-only layout inspection
+until a render is separately requested. With items 1-3, about 12 slides saved;
+after the goals and second exercise slide, roughly 38 slides versus 48 now.
+This is a source-based estimate, not a verified rendered count or timing.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+5. Keep the practice opportunities, but combine each Your Turn prompt with its
+desired output (Rmd married-income and married-credit activities).
+Evidence: each has prompt, output, and answer on three separate slides.
+Put prompt and compact expected output together, retain a later answer reveal
+and student work time. Expected saving: two additional slides, if readable.
+Do not remove an activity or convert it into a worked demonstration.
+Effect: optional addition to items 1-4; preserve starter blanks untouched.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+6. Correct precise wording and labels, retaining the existing teaching scope.
+Targets: Rmd Continuous Data, grouping explanation, density title, Live Coding,
+Wrapping Up; matching live-coding typo in starter.
+Evidence: numeric/quantitative is presented as synonymous with continuous;
+group_by() is described as filtering rows; density uses gender but says
+Marital Status; live prompt repeats 'interested in'; supplementary chapters
+2 and 19 refer to Workflow: basics and Joins, not this visualization lesson.
+Change: distinguish numeric storage from continuous measurements and discrete
+counts/ratings; explain grouping as defining groups for later operations;
+change density title to Gender (matching starter); fix repeated words.
+Keep live coding open-ended and add one question about what counts as a review
+and one about whether an observed association supports the promotion decision.
+Replace reading references with R4DS 10 Exploratory data analysis,
+17 Dates and times, and relevant 3 Data transformation sections.
+Evidence sources: https://dplyr.tidyverse.org/reference/group_by.html and
+https://r4ds.hadley.nz/ (official sources inspected during review).
+Effect: no added slide required; coordinate items 2, 4, and 8.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+7. Align and rename the exercise solution and its existing rubric.
+Targets: Exercise-04-Solution.qmd -> Exercise-03-Solution.qmd and its DOCX.
+Evidence: old solution has only a transaction summary and an age/purchase plot;
+it lacks the inherited discrete deliverables and interpretation. Its rubric
+awards generic table/chart points without the new synthesis requirements.
+Change: replace the example with one coherent response to A1, using the same
+regional groups for a discrete profile and continuous comparison. Retain five
+points, adapting the existing criteria to (1) discrete table/chart, (2) regional
+numeric summary including continuous and transaction measures, (3) continuous
+chart, (4) integrated finding/limitation, (5) tidyverse conventions and complete
+rendered Word submission. Permit alternative defensible variables and plots.
+Use historical dates explicitly; avoid implying 2026 age is age in Dec 2018.
+Rename and refresh the generated DOCX if approved; inspect rendered pages.
+Effect: required before solution publication and full grading alignment.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+8. Synchronize starter and choose a whole-step practice reduction.
+Target: 04-starter-code.qmd, after approved slide changes.
+Evidence: setup and Your Turn chunks are already empty. The only fully
+completed standalone step using exclusively prior-lecture concepts is
+customer_data |> count(gender). All other complete pipelines introduce this
+lecture's summarize/group_by, new geoms, or date functions; dropping scattered
+familiar lines from those pipelines would violate the whole-step rule.
+Change: synchronize any approved wording/order changes, then replace that
+one count step with a neutral result-focused TODO, leaving its chunk intact.
+This is 1 of 1 eligible steps (100%), NOT roughly 50%; approve this small
+exception or alter/reject it. Do not manufacture extra eligibility or remove
+current-lecture teaching code. Exclude both Your Turn chunks and setup.
+Effect: item 2's equivalent count is available for student reconstruction;
+run syntax/setup checks around intentional gaps, then consider Canvas upload.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+9. Publish the finalized exercise and synchronized files to Canvas.
+Targets: Exercise 3 assignment 1452125, Grade Exercise 3 assignment 1452143,
+solution item 3180614, existing old solution item 3180621, starter item 3180617.
+Evidence: Canvas Exercise 3 is still discrete-only; the existing grading note
+already points at Exercise-03-Solution.qmd and needs no duplicate note.
+Change: post A1 text to the existing Exercise 3; after items 7-8, replace the
+intended solution/starter attachments while preserving module references,
+release dates, assignment points, due dates and submission settings. Resolve
+the obsolete Exercise-04-Solution link as part of publication, without leaving
+two competing solutions. Do not move unrelated assignments or course items.
+Effect: depends on approved solution/starter work; current local TXT is ready
+to paste. Updating assignment text alone would leave grading materials stale.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+10. Refresh the published slides and Canvas hyperlink after a render is ready.
+Targets: named slide HTML, index.html, GitHub Pages, Canvas 04-Slides.
+Evidence: existing live slides show Exercise 4 and no learning goals; repository
+has no observed workflow that regenerates slides from Rmd.
+Change: after the user supplies a render or explicitly requests rendering,
+verify the resulting slides, publish to Pages, verify deployed content, then
+refresh the Canvas URL query tied to that version if needed. A source push
+alone does not establish the updated slides are published.
+Effect: depends on finalized slide decisions; currently blocked on rendering
+authorization or user-rendered HTML. No render performed in this review.
+Decision: PENDING — Approve / Alter / Reject. Status: Blocked.
+
+GIT COMPLETION — AUTHORIZED
+G1. Commit and push only the authorized exercise/goals and review tracking files
+to the configured origin/main. Verify HEAD equals the remote branch and the
+working tree is clean. Initial destination and contents are unambiguous.
+Decision: Approve — standing skill completion step. Status: Needs update.
+
+USER REQUESTED CHANGES
+(Add requested changes here after discussion. Agent preserves this section.)
+

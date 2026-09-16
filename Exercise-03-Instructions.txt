@@ -1,8 +1,19 @@
-Exercise 3
+Exercise 3: Regional Customer Profiles
 
-Patagonia wants to understand how customer profiles differ across U.S. regions before planning regional marketing messages.
+Patagonia wants to understand how customer profiles and purchase activity differ across U.S. regions before planning regional marketing messages.
 
-Using `customer_data.csv`, choose one discrete customer characteristic. Prepare a count table and a clearly labeled chart comparing that characteristic across regions. Explain one finding that could inform regional messaging and one limitation of that conclusion. Choose the chart form and analysis approach yourself.
+Use `customer_data.csv` and `store_transactions.csv` to prepare one short client report. The files describe the same customers, identified by `customer_id`. Purchase activity means the number of purchases in December 2018 (`dec_2018`), the latest month in these historical transaction data.
 
-Submit a Word document rendered from Quarto containing your code, table, chart, and interpretation. Use the tidyverse and the coding conventions practiced in class.
+Choose one discrete customer characteristic and one continuous characteristic, such as income or credit score. Use `region` as the comparison groups, rather than as the characteristic itself. Decide which analysis operations and chart forms will answer the client's question.
+
+The Client Report
+
+Include:
+
+- A count table and a clearly labeled chart comparing your discrete characteristic across regions.
+- A numeric summary describing your continuous characteristic and December 2018 purchase activity in each region.
+- A clearly labeled chart comparing the distribution of your continuous characteristic across regions.
+- One finding that connects your discrete and continuous evidence to regional messaging, with purchase activity as context, and one limitation of that conclusion.
+
+Submit a Word document rendered from Quarto containing your code, tables, charts, and interpretation. Use the tidyverse and the coding conventions practiced in class. Choose and justify your approach; different defensible analyses are welcome.
 

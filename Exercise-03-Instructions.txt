@@ -1,0 +1,8 @@
+Exercise 3
+
+Patagonia wants to understand how customer profiles differ across U.S. regions before planning regional marketing messages.
+
+Using `customer_data.csv`, choose one discrete customer characteristic. Prepare a count table and a clearly labeled chart comparing that characteristic across regions. Explain one finding that could inform regional messaging and one limitation of that conclusion. Choose the chart form and analysis approach yourself.
+
+Submit a Word document rendered from Quarto containing your code, table, chart, and interpretation. Use the tidyverse and the coding conventions practiced in class.
+

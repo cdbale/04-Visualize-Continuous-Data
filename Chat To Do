@@ -181,8 +181,36 @@ GIT COMPLETION — AUTHORIZED
 G1. Commit and push only the authorized exercise/goals and review tracking files
 to the configured origin/main. Verify HEAD equals the remote branch and the
 working tree is clean. Initial destination and contents are unambiguous.
-Decision: Approve — standing skill completion step. Status: Needs update.
+Decision: Approve — standing skill completion step. Status: Blocked.
+Local content commit da02eee created and inspected (four intended files only).
+Automatic approval review rejected git push origin main: it considered a push
+to the default branch a consequential external publication and required the
+user's explicit authorization for this exact remote push. No push ran.
+Await approval to push this lecture's reviewed commits to
+https://github.com/cdbale/04-Visualize-Continuous-Data.git, branch main.
+The audit tracking update will be committed locally as well.
+
+FINAL CHECKLIST AUDIT — 2026-09-16
+1. Slides: Verified for authorized goals/exercise source changes only; source
+   and diff inspected. Proposed correctness/condensation edits remain pending.
+2. Exercise: Needs update overall. Student brief is Verified and identical in
+   TXT/Rmd; separate old solution/rubric still requires item 7 approval.
+3. Starter synchronization: Needs update; item 8 pending, file unchanged.
+4. Prior-material starter reduction: Needs update; only one eligible complete
+   step found; proposed 1-of-1 exception awaits a decision (item 8).
+5. Canvas exercise description: Needs update; discrete-only description was
+   inspected in assignment 1452125. Ready-to-paste revised TXT exists.
+6. Canvas grading note: Verified; assignment 1452143 already contains one note
+   locating the rubric in Exercise-03-Solution.qmd. File content synchronization
+   remains separately pending; this does not certify the new rubric is posted.
+7. Canvas starter upload: Needs update; existing item 3180617 inspected, local
+   starter exists, no revision/upload approved or performed.
+8. GitHub push: Blocked by automatic approval review; local commit created.
+9. Pages/Canvas slide hyperlink: Blocked pending user-rendered HTML or explicit
+   rendering authorization and publication. Live destination inspected; still
+   Exercise 4 with no learning goals. No generated slides changed.
+The full lecture update is not complete. No pending suggestion was implemented.
+Completed A1/A2 records were appended, verified, then removed from active tasks.
 
 USER REQUESTED CHANGES
 (Add requested changes here after discussion. Agent preserves this section.)
-

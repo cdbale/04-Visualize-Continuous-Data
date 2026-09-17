@@ -271,3 +271,81 @@ three Your Turn activities, the prior-lecture count task, and live coding.
 Slide-only setup inspection (glimpse), duplicated code/output reveals, and
 chunk display options account for remaining differences. No code mismatches
 found; no instructional files changed, executed, or rendered during this audit.
+
+
+Publication closeout — 2026-09-17
+User explicitly requested committing/pushing all changes, uploading the solution,
+HTML slides and starter, verifying Pages/Canvas links, updating Exercise 3, and
+confirming the Grade Exercise 3 rubric reference. User reports rendering and
+checking the slides, starter and Exercise 3 solution. This supersedes the prior
+pending decisions and push approval blocker.
+
+Original task records (historical decisions below superseded by this closeout):
+9. Publish the finalized exercise and synchronized files to Canvas.
+Targets: Exercise 3 assignment 1452125, Grade Exercise 3 assignment 1452143,
+solution item 3180614, existing old solution item 3180621, starter item 3180617.
+Evidence: Canvas Exercise 3 is still discrete-only; the existing grading note
+already points at Exercise-03-Solution.qmd and needs no duplicate note.
+Change: post A1 text to the existing Exercise 3; after items 7-8, replace the
+intended solution/starter attachments while preserving module references,
+release dates, assignment points, due dates and submission settings. Resolve
+the obsolete Exercise-04-Solution link as part of publication, without leaving
+two competing solutions. Do not move unrelated assignments or course items.
+Effect: depends on approved solution/starter work; current local TXT is ready
+to paste. Updating assignment text alone would leave grading materials stale.
+Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
+
+10. Refresh the published slides and Canvas hyperlink after a render is ready.
+Targets: named slide HTML, index.html, GitHub Pages, Canvas 04-Slides.
+Evidence: existing live slides show Exercise 4 and no learning goals; repository
+has no observed workflow that regenerates slides from Rmd.
+Change: after the user supplies a render or explicitly requests rendering,
+verify the resulting slides, publish to Pages, verify deployed content, then
+refresh the Canvas URL query tied to that version if needed. A source push
+alone does not establish the updated slides are published.
+Effect: depends on finalized slide decisions; currently blocked on rendering
+authorization or user-rendered HTML. No render performed in this review.
+Decision: PENDING — Approve / Alter / Reject. Status: Blocked.
+
+GIT COMPLETION — AUTHORIZED
+G1. Commit and push only the authorized exercise/goals and review tracking files
+to the configured origin/main. Verify HEAD equals the remote branch and the
+working tree is clean. Initial destination and contents are unambiguous.
+Decision: Approve — standing skill completion step. Status: Blocked.
+Local content commit da02eee created and inspected (four intended files only).
+Automatic approval review rejected git push origin main: it considered a push
+to the default branch a consequential external publication and required the
+user's explicit authorization for this exact remote push. No push ran.
+Await approval to push this lecture's reviewed commits to
+https://github.com/cdbale/04-Visualize-Continuous-Data.git, branch main.
+The audit tracking update will be committed locally as well.
+
+
+Completion evidence — items 9, 10 and G1: Verified.
+- Committed all lecture changes in fdbb5b382c9e19a3e0ee5525190371a1765d2a87
+  and pushed origin/main. HEAD and origin/main matched; working tree clean.
+  Final tracking changes will receive a separate closeout commit and push.
+- Canvas course 38688 Exercise 3 assignment 1452125 now contains the complete
+  Regional Customer Profiles brief, both input files, all four deliverables,
+  and Word/Quarto submission requirements. Saved page verified; five points,
+  Sep 24 due dates (2pm/3:30pm), Oct 1 close dates, and file uploads preserved.
+- Grade Exercise 3 assignment 1452143 already correctly refers students to the
+  rubric in Exercise-03-Solution.qmd; verified without adding a duplicate.
+- Replaced existing Canvas files through Chrome; success messages verified:
+  04-Visualize-Continuous-Data.html -> file 13794922 (5,573,909 local bytes),
+  04-starter-code.qmd -> file 13794923 (5,516 local bytes),
+  Exercise-03-Solution.qmd -> file 13794924 (6,858 local bytes).
+  Module items 3180616, 3180617 and 3180614 resolve to those new downloads.
+  HTML and starter remain published; solution retains Sep 24 at 5pm release.
+- Obsolete Exercise-04-Solution.qmd file retained but unpublished. Module-link
+  removal confirmation repeatedly failed in the browser, so used the normal
+  file availability dialog to unpublish it instead. Saved Unpublished state
+  verified. No competing obsolete solution is released to students.
+- Canvas 04-Slides now points to:
+  https://cdbale.github.io/04-Visualize-Continuous-Data/?v=fdbb5b3#1
+  Saved URL verified in a fresh Canvas tab and opened directly from that URL.
+  Live deck verified: 36 slides, learning goals, .groups = "drop", no regrouping
+  message, and Exercise 3 Regional Customer Profiles ending. No new render.
+- Final audit: slides/exercise/starter and prior-material reduction Verified
+  by recorded source checks; Word visual review User-reported; all requested
+  Canvas publishing, rubric reference, GitHub and Pages items Verified.

@@ -34,3 +34,240 @@ Rscript is present but tidyverse is not available in its default sandbox library
 no claim of executing an R solution is made. No slides or solution were rendered.
 The separate old solution/rubric and Canvas text remain pending suggestions.
 
+
+1. Condense repeated orientation and summary setup (Rmd lines 10-81).
+Evidence: process and package artwork occupy separate slides; library/import
+occupy separate slides; the two-variable summary has a separate prompt slide.
+Combine the two orientation images; combine library/import with a compact
+glimpse output; move the two-variable prompt and statistics list onto its
+worked example. Preserve the motivating scenario, continuous/discrete
+distinction, single-mean example, and summarize-versus-mutate discussion.
+Expected saving: about three slides; no change in conceptual emphasis.
+Effect: starter order should follow item 8; learning goals and exercise remain.
+Decision: Approve — user explicitly approved #1; all others pending. Status: Verified.
+
+Verification: consolidated process/package images in the established flex layout;
+combined package load/import/glimpse on a smaller slide, hid package startup
+messages and set glimpse width to 60; combined the two-variable prompt and
+statistics list with the worked example. Source-defined slide count decreased
+from 50 to 47, including title. Preserved all R computations (only glimpse
+output width changed), both images, all conceptual discussion, learning goals,
+and all content from the first Your Turn onward. Source/diff checks passed.
+No rendering or visual-layout verification performed. Items 2-10 remain pending.
+Existing index.html deletion was observed before edits and left untouched.
+No commit, push, Canvas change, starter edit, or generated-slide edit performed.
+
+
+2. Condense the count-equivalence explanation (Rmd lines 224-246).
+Evidence: the wrapper explanation and two identical count outputs use three
+slides. Present group_by(gender) |> summarize(n = n()) and count(gender)
+together with one shared output and a one-sentence explanation.
+Expected saving: two slides; retain the earlier mean-by-group example,
+multiple grouping variables, and grouped slice_max example as taught concepts.
+Effect: coordinate corrected grouping wording in item 6 and starter item 8.
+Decision: Approve — user explicitly approved #2, #4, #5, #6; others pending. Status: Verified.
+
+
+4. Combine three short plotting examples with their outputs (Rmd histogram
+lines 120-135, income boxplot lines 349-365, density lines 395-415).
+Evidence: each short pipeline occupies a slide before a separate output.
+Use compact code beside/above a readable chart. Keep density as an alternative
+to boxplots, and retain the longer jitter/smooth/facet code and output on
+separate slides. Expected saving: three slides; no change in emphasis.
+Effect: density title correction in item 6; source-only layout inspection
+until a render is separately requested. With items 1-3, about 12 slides saved;
+after the goals and second exercise slide, roughly 38 slides versus 48 now.
+This is a source-based estimate, not a verified rendered count or timing.
+Decision: Approve — user explicitly approved #2, #4, #5, #6; others pending. Status: Verified.
+
+
+5. Keep the practice opportunities, but combine each Your Turn prompt with its
+desired output (Rmd married-income and married-credit activities).
+Evidence: each has prompt, output, and answer on three separate slides.
+Put prompt and compact expected output together, retain a later answer reveal
+and student work time. Expected saving: two additional slides, if readable.
+Do not remove an activity or convert it into a worked demonstration.
+Effect: optional addition to items 1-4; preserve starter blanks untouched.
+Decision: Approve — user explicitly approved #2, #4, #5, #6; others pending. Status: Verified.
+
+
+6. Correct precise wording and labels, retaining the existing teaching scope.
+Targets: Rmd Continuous Data, grouping explanation, density title, Live Coding,
+Wrapping Up; matching live-coding typo in starter.
+Evidence: numeric/quantitative is presented as synonymous with continuous;
+group_by() is described as filtering rows; density uses gender but says
+Marital Status; live prompt repeats 'interested in'; supplementary chapters
+2 and 19 refer to Workflow: basics and Joins, not this visualization lesson.
+Change: distinguish numeric storage from continuous measurements and discrete
+counts/ratings; explain grouping as defining groups for later operations;
+change density title to Gender (matching starter); fix repeated words.
+Keep live coding open-ended and add one question about what counts as a review
+and one about whether an observed association supports the promotion decision.
+Replace reading references with R4DS 10 Exploratory data analysis,
+17 Dates and times, and relevant 3 Data transformation sections.
+Evidence sources: https://dplyr.tidyverse.org/reference/group_by.html and
+https://r4ds.hadley.nz/ (official sources inspected during review).
+Effect: no added slide required; coordinate items 2, 4, and 8.
+Decision: Approve — user explicitly approved #2, #4, #5, #6; others pending. Status: Verified.
+
+Verification for items 2, 4, 5, 6:
+- Item 2: wrapper/grouping explanation and both count expressions share one
+  slide and one displayed table; saved two slides. Grouped means, multiple
+  groups, and grouped slicing remain.
+- Item 4: histogram, income boxplot, and density examples each show code and
+  plot together with compact figure dimensions; saved three slides. Longer
+  jitter/smooth/facet code and output remain separate.
+- Item 5: both Your Turn prompts now share a slide with their expected output;
+  saved two slides. Both later Code Solution slides remain for answer reveals.
+- Item 6: distinguished continuous variables from numeric storage and discrete
+  counts/ratings; corrected grouping explanation and density title; corrected
+  live-coding typo in slides and starter; added two open-ended discussion
+  questions in slides. Replaced readings with verified official R4DS chapters
+  10 (https://r4ds.hadley.nz/EDA.html), 17 (datetimes.html), and 3, section 3.5
+  (data-transform.html). The starter's only edit is the approved wording typo.
+Source-defined slide count: 47 -> 40, including title. Distinct R pipelines
+are preserved apart from the density title correction; three duplicate plot
+chunks were consolidated. Time-series and final exercise source unchanged.
+Learning goals remain first. Source and whitespace diff checks passed.
+This is source verification, not rendered-layout or runtime verification.
+No render, generated-HTML edit, commit, push, or Canvas mutation performed.
+User's existing named-HTML modification and index.html deletion left untouched.
+Remaining suggestions: 3, 7, 8, 9, 10. Publication approval remains pending.
+
+
+3. Shorten the time-series sequence without removing dates or aggregation
+(Rmd Time Series Data through Visualize Grouped Summaries, lines 272-347).
+Evidence: raw-date code/output are separate, the parsed-date line plot repeats
+on consecutive slides, the lubridate artwork is standalone, and annual code
+and output are separate. Combine the raw-date code and diagnostic plot;
+retain parsing and a compact date preview; fold the artwork into that slide;
+show the parsed-but-unsummarized plot once with its diagnostic question;
+show annual aggregation code with its result at a readable size.
+Expected saving: about four slides. Keep the distinction between parsing dates
+and choosing the observational time unit. No concept removed.
+Effect: preserve mdy(), year(), geom_line(), grouped means in starter item 8.
+Decision: Approve — user approved #3, #7, #8. Status: Verified.
+
+
+8. Synchronize starter and choose a whole-step practice reduction.
+Target: 04-starter-code.qmd, after approved slide changes.
+Evidence: setup and Your Turn chunks are already empty. The only fully
+completed standalone step using exclusively prior-lecture concepts is
+customer_data |> count(gender). All other complete pipelines introduce this
+lecture's summarize/group_by, new geoms, or date functions; dropping scattered
+familiar lines from those pipelines would violate the whole-step rule.
+Change: synchronize any approved wording/order changes, then replace that
+one count step with a neutral result-focused TODO, leaving its chunk intact.
+This is 1 of 1 eligible steps (100%), NOT roughly 50%; approve this small
+exception or alter/reject it. Do not manufacture extra eligibility or remove
+current-lecture teaching code. Exclude both Your Turn chunks and setup.
+Effect: item 2's equivalent count is available for student reconstruction;
+run syntax/setup checks around intentional gaps, then consider Canvas upload.
+Decision: Approve — user approved #3, #7, #8. Status: Verified.
+
+Verification for #3 and #8:
+#3: time-series sequence reduced from eight to four slides; raw-date code and
+plot share one slide; parsing, three-row preview and lubridate artwork share
+one slide; the parsed-but-unsummarized plot appears once with its question;
+yearly summary code and plot share one slide. mdy(), year(), geom_line(),
+grouped means, parsing-vs-aggregation distinction and artwork preserved.
+Total source slide count 40 -> 36 including title. Other slide sections unchanged.
+#8: starter now follows raw dates -> parsed dates -> yearly summary; preview
+matches slides and live-coding discussion questions are synchronized. Removed
+only the complete customer_data |> count(gender) step and replaced it with an
+intact neutral TODO chunk. This is the explicitly approved 1-of-1 eligible-step
+exception (100%); both Your Turn chunks and essential setup blanks preserved.
+Checks: 24 Rmd chunks, 22 starter chunks and 5 solution chunks parse in R 4.6.1.
+Starter examples execute with only library/import setup supplied; all nine
+plots build. Comparison confirms no edits to starter Your Turn chunks or slide
+content outside the time-series section. Source/whitespace checks passed.
+No lecture slide rendering, generated-slide edit, Canvas change, commit or push.
+#7 remains active until Word page layout can be visually verified.
+
+
+7. Align and rename the exercise solution and its existing rubric.
+Targets: Exercise-04-Solution.qmd -> Exercise-03-Solution.qmd and its DOCX.
+Evidence: old solution has only a transaction summary and an age/purchase plot;
+it lacks the inherited discrete deliverables and interpretation. Its rubric
+awards generic table/chart points without the new synthesis requirements.
+Change: replace the example with one coherent response to A1, using the same
+regional groups for a discrete profile and continuous comparison. Retain five
+points, adapting the existing criteria to (1) discrete table/chart, (2) regional
+numeric summary including continuous and transaction measures, (3) continuous
+chart, (4) integrated finding/limitation, (5) tidyverse conventions and complete
+rendered Word submission. Permit alternative defensible variables and plots.
+Use historical dates explicitly; avoid implying 2026 age is age in Dec 2018.
+Rename and refresh the generated DOCX if approved; inspect rendered pages.
+Effect: required before solution publication and full grading alignment.
+Decision: Approve — user approved #3, #7, #8. Status: User-reported — completed by explicit user confirmation on 2026-09-17.
+
+Completed portion: renamed/rebuilt Exercise-03-Solution.qmd and DOCX; the brief
+matches the student TXT exactly; five-point rubric follows the approved criteria;
+worked example includes discrete counts/proportion chart, regional continuous
+and purchase summary, income boxplot, and integrated finding/limitations.
+Quarto 1.9.38 executed all five solution chunks and generated the DOCX with R
+4.6.1 and the installed tidyverse. Statistics independently verified: South
+college-degree share 19.8%, mean income 111,971, median income 105,000; other
+regions degree share 79.2-80.6%, means 141,278-143,411; mean Dec 2018 purchase
+counts 1.52-1.56 across regions. DOCX ZIP/XML checks passed; two plots embedded.
+Old Exercise-04 QMD removed; original DOCX preserved in the course tmp QA backup.
+Historical verification limitation: packaged render_docx.py could not find LibreOffice/soffice.exe.
+Cached Windows Codex runtime metadata reports libreOfficeVersion: null. No
+page PNGs could be produced. The documents skill requires rendered-page visual
+inspection before marking the Word deliverable Verified. No visual QA claimed.
+No task-dependent software installation or desktop automation was attempted.
+Source: C:/Users/Cam/.codex/plugins/cache/openai-primary-runtime/documents/26.905.11957/skills/documents/SKILL.md
+Solution DOCX rendering was approved under #7; lecture rendering remains pending.
+
+Completion confirmation — 2026-09-17
+User: You can mark 7 as completed
+Item 7 is complete as User-reported. Prior code/content checks remain valid;
+independent Word page-layout verification was not performed. This confirmation
+does not approve items 9, 10, rendering of lecture slides, or publication.
+
+11. Convert slide 9's average-income/credit example to a Your Turn exercise.
+Decision: Approve — explicitly requested in Chat To Do and user message.
+Status: Verified — 2026-09-17.
+User request (verbatim):
+- Slide 9: change the display of average income and average credit to a "Your Turn" exercise. Update both the slides and starter code accordingly.
+Changed the slide to Your Turn! | Average Income and Credit, with a prompt for
+one row containing avg_income and avg_credit. Retained the expected output
+with echo=FALSE so students do not see the answer code. Preserved the list of
+other statistics. Replaced the corresponding starter solution with an empty
+comment-only chunk and matching Your Turn heading; previous single-mean
+example remains available for reference. No extra slide or answer reveal added.
+Checks: all 24 slide and 22 starter R chunks parsed successfully; slide R
+calculations unchanged; expected output hidden-code setting verified; starter
+contains no answer; next practice unchanged; source count remains 36 slides.
+No rendering, generated-slide edit, solution change, Canvas change, commit or
+push. Items 9, 10 and publication remain pending.
+
+12. Explain and explicitly drop grouping in slide 22's finished summary.
+Decision: Approve — user requested the proposed sentence and .groups = "drop".
+Status: Verified — 2026-09-17.
+Added .groups = "drop" to the gender/region summarize() call, retaining the
+same summary measures and descending average-income order. Added the sentence:
+"`.groups` controls how the result stays grouped—not which groups we summarize."
+Checked the targeted source and diff. This explicitly removes output grouping
+and suppresses the regrouping message; grouping columns and summary values
+are unchanged. Slide count unchanged. This request updates slide source only.
+No slide rendering, generated HTML edit, Canvas change, commit or push.
+
+13. Synchronize starter code with slide 22's grouping clarification.
+Decision: Approve — user follow-up requested matching starter synchronization.
+Status: Verified — 2026-09-17.
+Added .groups = "drop" to the matching gender/region summary and the slide's
+explanatory sentence as a code comment. All 22 starter R chunks parsed
+successfully; source diff whitespace check passed. No rendering or publication.
+
+14. Double-check starter and slide code consistency.
+Decision: Approve — user requested a consistency audit.
+Status: Verified — 2026-09-17.
+Parsed all 24 slide R chunks and all 22 starter R chunks with base R.
+All 15 populated starter chunks match parsed slide expressions exactly and
+occur in the same instructional order, including .groups = "drop".
+The seven empty starter chunks are intentional: library loading, data import,
+three Your Turn activities, the prior-lecture count task, and live coding.
+Slide-only setup inspection (glimpse), duplicated code/output reveals, and
+chunk display options account for remaining differences. No code mismatches
+found; no instructional files changed, executed, or rendered during this audit.

@@ -3,7 +3,10 @@ LECTURE 04 REVIEW — 2026-09-16
 SCOPE
 User authorized: review with condensation suggestions; synthesize the saved
 Exercise 3 with this lecture's exercise and rename the exercise Exercise 3.
-New suggestions below remain pending. No rendering is authorized.
+Items 1-6 and 8 are approved and Verified in Chat Completed.
+Item 7 is complete as User-reported (user confirmation on 2026-09-17).
+Items 9, 10 and publication remain pending. Solution rendering is approved;
+lecture slide rendering remains unapproved.
 
 INVENTORY AND EVIDENCE
 Repository root verified with git rev-parse: this 04-Visualize-Continuous-Data
@@ -40,116 +43,13 @@ Opened that link: live slides still end with Exercise 4 and lack learning goals.
 
 AUTHORIZED WORK
 
-A1 and A2 are Verified and recorded in Chat Completed.
+A1, A2, and suggestions 1-6 and 8 are Verified in Chat Completed.
+Suggestion 7 is User-reported complete and recorded there as well.
+User request 11 (slide 9 Your Turn and matching starter) is Verified there.
 
-PENDING NUMBERED SUGGESTIONS
+UNFINISHED NUMBERED ITEMS
 For each item, record Approve, Alter, or Reject. Silence is not approval.
 Locations below use section names and original source lines, before edits.
-
-1. Condense repeated orientation and summary setup (Rmd lines 10-81).
-Evidence: process and package artwork occupy separate slides; library/import
-occupy separate slides; the two-variable summary has a separate prompt slide.
-Combine the two orientation images; combine library/import with a compact
-glimpse output; move the two-variable prompt and statistics list onto its
-worked example. Preserve the motivating scenario, continuous/discrete
-distinction, single-mean example, and summarize-versus-mutate discussion.
-Expected saving: about three slides; no change in conceptual emphasis.
-Effect: starter order should follow item 8; learning goals and exercise remain.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-2. Condense the count-equivalence explanation (Rmd lines 224-246).
-Evidence: the wrapper explanation and two identical count outputs use three
-slides. Present group_by(gender) |> summarize(n = n()) and count(gender)
-together with one shared output and a one-sentence explanation.
-Expected saving: two slides; retain the earlier mean-by-group example,
-multiple grouping variables, and grouped slice_max example as taught concepts.
-Effect: coordinate corrected grouping wording in item 6 and starter item 8.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-3. Shorten the time-series sequence without removing dates or aggregation
-(Rmd Time Series Data through Visualize Grouped Summaries, lines 272-347).
-Evidence: raw-date code/output are separate, the parsed-date line plot repeats
-on consecutive slides, the lubridate artwork is standalone, and annual code
-and output are separate. Combine the raw-date code and diagnostic plot;
-retain parsing and a compact date preview; fold the artwork into that slide;
-show the parsed-but-unsummarized plot once with its diagnostic question;
-show annual aggregation code with its result at a readable size.
-Expected saving: about four slides. Keep the distinction between parsing dates
-and choosing the observational time unit. No concept removed.
-Effect: preserve mdy(), year(), geom_line(), grouped means in starter item 8.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-4. Combine three short plotting examples with their outputs (Rmd histogram
-lines 120-135, income boxplot lines 349-365, density lines 395-415).
-Evidence: each short pipeline occupies a slide before a separate output.
-Use compact code beside/above a readable chart. Keep density as an alternative
-to boxplots, and retain the longer jitter/smooth/facet code and output on
-separate slides. Expected saving: three slides; no change in emphasis.
-Effect: density title correction in item 6; source-only layout inspection
-until a render is separately requested. With items 1-3, about 12 slides saved;
-after the goals and second exercise slide, roughly 38 slides versus 48 now.
-This is a source-based estimate, not a verified rendered count or timing.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-5. Keep the practice opportunities, but combine each Your Turn prompt with its
-desired output (Rmd married-income and married-credit activities).
-Evidence: each has prompt, output, and answer on three separate slides.
-Put prompt and compact expected output together, retain a later answer reveal
-and student work time. Expected saving: two additional slides, if readable.
-Do not remove an activity or convert it into a worked demonstration.
-Effect: optional addition to items 1-4; preserve starter blanks untouched.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-6. Correct precise wording and labels, retaining the existing teaching scope.
-Targets: Rmd Continuous Data, grouping explanation, density title, Live Coding,
-Wrapping Up; matching live-coding typo in starter.
-Evidence: numeric/quantitative is presented as synonymous with continuous;
-group_by() is described as filtering rows; density uses gender but says
-Marital Status; live prompt repeats 'interested in'; supplementary chapters
-2 and 19 refer to Workflow: basics and Joins, not this visualization lesson.
-Change: distinguish numeric storage from continuous measurements and discrete
-counts/ratings; explain grouping as defining groups for later operations;
-change density title to Gender (matching starter); fix repeated words.
-Keep live coding open-ended and add one question about what counts as a review
-and one about whether an observed association supports the promotion decision.
-Replace reading references with R4DS 10 Exploratory data analysis,
-17 Dates and times, and relevant 3 Data transformation sections.
-Evidence sources: https://dplyr.tidyverse.org/reference/group_by.html and
-https://r4ds.hadley.nz/ (official sources inspected during review).
-Effect: no added slide required; coordinate items 2, 4, and 8.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-7. Align and rename the exercise solution and its existing rubric.
-Targets: Exercise-04-Solution.qmd -> Exercise-03-Solution.qmd and its DOCX.
-Evidence: old solution has only a transaction summary and an age/purchase plot;
-it lacks the inherited discrete deliverables and interpretation. Its rubric
-awards generic table/chart points without the new synthesis requirements.
-Change: replace the example with one coherent response to A1, using the same
-regional groups for a discrete profile and continuous comparison. Retain five
-points, adapting the existing criteria to (1) discrete table/chart, (2) regional
-numeric summary including continuous and transaction measures, (3) continuous
-chart, (4) integrated finding/limitation, (5) tidyverse conventions and complete
-rendered Word submission. Permit alternative defensible variables and plots.
-Use historical dates explicitly; avoid implying 2026 age is age in Dec 2018.
-Rename and refresh the generated DOCX if approved; inspect rendered pages.
-Effect: required before solution publication and full grading alignment.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
-
-8. Synchronize starter and choose a whole-step practice reduction.
-Target: 04-starter-code.qmd, after approved slide changes.
-Evidence: setup and Your Turn chunks are already empty. The only fully
-completed standalone step using exclusively prior-lecture concepts is
-customer_data |> count(gender). All other complete pipelines introduce this
-lecture's summarize/group_by, new geoms, or date functions; dropping scattered
-familiar lines from those pipelines would violate the whole-step rule.
-Change: synchronize any approved wording/order changes, then replace that
-one count step with a neutral result-focused TODO, leaving its chunk intact.
-This is 1 of 1 eligible steps (100%), NOT roughly 50%; approve this small
-exception or alter/reject it. Do not manufacture extra eligibility or remove
-current-lecture teaching code. Exclude both Your Turn chunks and setup.
-Effect: item 2's equivalent count is available for student reconstruction;
-run syntax/setup checks around intentional gaps, then consider Canvas upload.
-Decision: PENDING — Approve / Alter / Reject. Status: Needs update.
 
 9. Publish the finalized exercise and synchronized files to Canvas.
 Targets: Exercise 3 assignment 1452125, Grade Exercise 3 assignment 1452143,
@@ -190,27 +90,31 @@ Await approval to push this lecture's reviewed commits to
 https://github.com/cdbale/04-Visualize-Continuous-Data.git, branch main.
 The audit tracking update will be committed locally as well.
 
-FINAL CHECKLIST AUDIT — 2026-09-16
-1. Slides: Verified for authorized goals/exercise source changes only; source
-   and diff inspected. Proposed correctness/condensation edits remain pending.
-2. Exercise: Needs update overall. Student brief is Verified and identical in
-   TXT/Rmd; separate old solution/rubric still requires item 7 approval.
-3. Starter synchronization: Needs update; item 8 pending, file unchanged.
-4. Prior-material starter reduction: Needs update; only one eligible complete
-   step found; proposed 1-of-1 exception awaits a decision (item 8).
-5. Canvas exercise description: Needs update; discrete-only description was
-   inspected in assignment 1452125. Ready-to-paste revised TXT exists.
-6. Canvas grading note: Verified; assignment 1452143 already contains one note
-   locating the rubric in Exercise-03-Solution.qmd. File content synchronization
-   remains separately pending; this does not certify the new rubric is posted.
-7. Canvas starter upload: Needs update; existing item 3180617 inspected, local
-   starter exists, no revision/upload approved or performed.
-8. GitHub push: Blocked by automatic approval review; local commit created.
-9. Pages/Canvas slide hyperlink: Blocked pending user-rendered HTML or explicit
-   rendering authorization and publication. Live destination inspected; still
-   Exercise 4 with no learning goals. No generated slides changed.
-The full lecture update is not complete. No pending suggestion was implemented.
-Completed A1/A2 records were appended, verified, then removed from active tasks.
-
+FINAL CHECKLIST AUDIT — updated 2026-09-17
+1. Slides: Verified for all approved source edits (items 1-6, 11 and 12), learning goals
+   first and Exercise 3 last. Source count 36 including title. No slide render.
+2. Exercise: User-reported complete (#7), confirmed 2026-09-17. Source, rubric,
+   statistics and Quarto build previously checked; Word visual QA not performed.
+3. Starter synchronization: Verified through #13; matches the source sequence and
+   live-coding prompts and slide 9 Your Turn. R syntax checks passed after #13;
+   setup checks and nine plot builds passed in the previous verification.
+   Slide 22's explicit .groups = "drop" and explanatory sentence are now
+   synchronized in the starter code (#13).
+4. Prior-material starter reduction: Verified; approved 1-of-1 complete count
+   step replaced by neutral TODO. Setup/Your Turn blanks preserved.
+5. Canvas exercise description: Needs update; #9 pending. No live edit.
+6. Canvas grading note: Verified during initial review; one note in assignment
+   1452143 points to Exercise-03-Solution.qmd. Revised solution not uploaded.
+7. Canvas starter upload: Needs update; #9 pending; finalized local QMD ready.
+8. GitHub push: Blocked by earlier automatic approval review; publication still
+   pending. No new commit or push; initial local commits remain unpushed.
+9. Pages/Canvas slide hyperlink: Blocked pending final rendered lecture and
+   publication approval (#10). User-edited named HTML and deleted index preserved.
+All approved local changes are complete (Verified or User-reported).
+The full lecture update remains incomplete: items 9, 10 and publication are pending. Completion entries were
+appended and verified before removal from active items. User section preserved.
 USER REQUESTED CHANGES
 (Add requested changes here after discussion. Agent preserves this section.)
+
+
+- 

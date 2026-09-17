@@ -31,15 +31,13 @@ customer_data |>
   summarize(avg_income = mean(income))
 ```
 
+### Your Turn! | Average Income and Credit
+
 ```{r}
 
-# This code displays a data frame with two columns, one for average income and one for average credit.
+# Display a one-row data frame with the mean income and mean credit score.
+# Name the columns avg_income and avg_credit.
 
-customer_data |>
-  summarize(
-    avg_income = mean(income),
-    avg_credit = mean(credit)
-  )
 ```
 
 ### Your Turn!
@@ -114,7 +112,7 @@ customer_data |>
 
 ```{r}
 
-# This code shows that group_by(gender) |> summarize (n = n()) does the same thing as count(gender).
+# This grouped summary produces one customer count for each gender.
 
 customer_data |>
   group_by(gender) |>
@@ -125,22 +123,22 @@ customer_data |>
 
 ```{r}
 
-# This code shows that group_by(gender) |> summarize (n = n()) does the same thing as count(gender).
+# Recreate the same customer-count table using a method from the previous lecture.
 
-customer_data |>
-  count(gender)
 ```
 
 ```{r}
 
 # This code groups by gender AND region and displays average incomes and credit for each combination. Then the rows are arranged from the group with the highest average income to the lowest.
+# .groups controls how the result stays grouped—not which groups we summarize.
 
 customer_data |>
   group_by(gender, region) |>
   summarize(
     n = n(),
     avg_income = mean(income),
-    avg_credit = mean(credit)
+    avg_credit = mean(credit),
+    .groups = "drop"
   ) |> 
   arrange(desc(avg_income))
 ```
@@ -158,6 +156,17 @@ customer_data |>
 
 ```{r}
 
+# Inspect the review-time plot before converting the text dates.
+
+customer_data |>
+  ggplot(aes(x = review_time, y = star_rating)) +
+  geom_line()
+```
+
+### Parse Review Dates
+
+```{r}
+
 # This code uses the lubridate package to wrangle the review times into a more useable form, and saves them along with the star rating as rating_data.
 
 rating_data <- customer_data |> 
@@ -165,12 +174,12 @@ rating_data <- customer_data |>
   select(review_time, star_rating) |> 
   mutate(review_time = mdy(review_time))
 
-rating_data
+print(rating_data, n = 3)
 ```
 
 ```{r}
 
-# This code produces a line plot of the star rating over time.
+# Dates are now parsed, but why is this individual-rating plot still hard to interpret?
 
 rating_data |> 
   ggplot(aes(x = review_time, y = star_rating)) +
@@ -226,7 +235,9 @@ customer_data |>
 
 ### Live Coding
 
-Suppose your client, Patagonia, is interested in interested in increasing customer engagement by offering a promotion to customers who leave a review. Can you uncover any variables that are related to whether a customer is more or less likely to leave a review?
+Suppose your client, Patagonia, is interested in increasing customer engagement by offering a promotion to customers who leave a review. Can you uncover any variables that are related to whether a customer is more or less likely to leave a review?
+
+- Would an observed association tell us whether the promotion will increase engagement? Why or why not?
 
 ```{r}
 

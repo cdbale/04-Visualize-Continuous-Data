@@ -1,0 +1,128 @@
+---
+title: "Exercise 3 Solution"
+format: docx
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+## Exercise 3: Regional Customer Profiles
+
+Patagonia wants to understand how customer profiles and purchase activity differ across U.S. regions before planning regional marketing messages.
+
+Use `customer_data.csv` and `store_transactions.csv` to prepare one short client report. The files describe the same customers, identified by `customer_id`. Purchase activity means the number of purchases in December 2018 (`dec_2018`), the latest month in these historical transaction data.
+
+Use one discrete customer characteristic and one continuous characteristic to examine the customer profiles. Use `region` to define the comparison groups.
+
+### The Client Report
+
+Include:
+
+- A count table and a clearly labeled chart comparing your discrete characteristic across regions.
+- A numeric summary describing your continuous characteristic and December 2018 purchase activity in each region.
+- A clearly labeled chart comparing the distribution of your continuous characteristic across regions.
+- One finding that connects your discrete and continuous evidence to regional messaging, with purchase activity as context, and one limitation of that conclusion.
+
+Submit a Word document rendered from Quarto containing your code, tables, charts, and interpretation. Use the tidyverse and the coding conventions practiced in class. Choose and justify your approach; different defensible analyses are welcome.
+
+## Grading Rubric
+
+Five points total, one point each for:
+
+1.  **Discrete comparison.** Provide a correct count table and a clearly labeled chart comparing one discrete customer characteristic across regions. Counts or within-region proportions are acceptable when accurately labeled. Region supplies the comparison groups; identifiers alone (e.g., customer ID) are not customer characteristics.
+2.  **Regional numeric summary.** Correctly summarize a continuous characteristic and December 2018 purchase activity for each region using the supplied customer and transaction records. Income or credit score is appropriate; purchase counts alone do not satisfy the continuous-variable requirement.
+3.  **Continuous comparison.** Provide a correct, clearly labeled chart comparing the distribution of the chosen continuous characteristic across regions.
+4.  **Interpretation.** Explain a supported finding connecting the discrete and continuous evidence to regional messaging, using purchase activity as context, and one relevant limitation. Distinguish an observed pattern from evidence that a particular message will work.
+5.  **Complete and readable submission.** Submit a Word document rendered from Quarto containing code, tables, charts, and interpretation. Use the tidyverse, readable pipes and spacing, meaningful names, and useful comments.
+
+Different defensible variables, summaries, chart forms, and conclusions can earn full credit. The example below is one possible response.
+
+## One Possible Solution
+
+We compare college-degree status and annual income across regions, with average purchases in December 2018 as context for regional messaging research.
+
+### Customer and Purchase Records
+
+```{r}
+# Connect each customer's profile with their purchase history.
+library(tidyverse)
+
+customer_data <- read_csv("customer_data.csv",
+                          show_col_types = FALSE)
+store_transactions <- read_csv("store_transactions.csv",
+                               show_col_types = FALSE)
+
+crm_data <- customer_data |>
+  left_join(store_transactions, join_by(customer_id))
+```
+
+Each file has one record per customer and the same 10,531 customer IDs, so this combination retains one row per customer. The fields used below have no missing values in these supplied files.
+
+### Discrete Customer Profile
+
+```{r}
+# Retain counts so the sizes of the regional groups are visible.
+crm_data |>
+  count(region, college_degree)
+```
+
+Regions have different numbers of customers. The chart compares degree-status proportions within each region; the table retains the customer counts.
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3.3
+#| fig-alt: "College-degree proportions by region, with a much smaller degree-holding share in the South."
+
+crm_data |>
+  count(region, college_degree) |>
+  ggplot(aes(x = region, y = n, fill = college_degree)) +
+  geom_col(position = "fill") +
+  labs(
+    title = "College-Degree Status by Region",
+    x = "Region",
+    y = "Proportion of Customers",
+    fill = "College Degree"
+  )
+```
+
+### Income and Purchase Activity
+
+```{r}
+# Compare income and purchase activity on a per-customer basis.
+crm_data |>
+  group_by(region) |>
+  summarize(
+    customers = n(),
+    avg_income = mean(income),
+    avg_purchases = mean(dec_2018)
+  )
+```
+
+Income supplies the continuous measure. The average purchase count describes activity in the latest month available, December 2018; it is not a measure of current activity.
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3.3
+#| fig-alt: "Boxplots comparing annual income across four regions, showing a lower central income range in the South."
+
+crm_data |>
+  ggplot(aes(x = income, y = region)) +
+  geom_boxplot() +
+  labs(
+    title = "Customer Income by Region",
+    x = "Annual Income",
+    y = "Region"
+  )
+```
+
+The boxplots show variation within each region, which a regional average alone would conceal.
+
+### Interpretation
+
+About 20% of customers in the South have college degrees, compared with roughly 79-81% in the other regions. Mean annual income is also lower in the South, about \$112,000 versus \$141,000-\$143,000 elsewhere. The income chart shows a lower central income range in the South as well as variation within each region.
+
+Mean December 2018 purchases are fairly similar across regions, about 1.52-1.56 per customer. Together, these findings suggest that Patagonia should test whether regional messages resonate with customers whose profiles differ, rather than assume the overall customer profile represents every region. Purchase activity provides little evidence of a large difference in average activity in this particular month.
+
+These historical CRM records do not establish that education or income causes message preferences or differences in purchase rates, or that a regional campaign would improve engagement. However, while the current marketing approach is producing very similar purchase rates across all regions, there may be messaging strategies that are more tailored to regional profiles, which could result in differential uplifts in purchase rates across regions. The client would need to test different strategies with treatment/control groups of consumers in each region to gain causal evidence of messaging effectiveness.
+

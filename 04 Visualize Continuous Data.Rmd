@@ -16,13 +16,10 @@ output:
 
 ## Marketing Analytics Process
 
-<center>
-![](Figures/process_visualize.png){width=900px}
-</center>
-
----
-
-![](Figures/hex_dplyr-ggplot2.png){width=900px}
+<div style="display: flex; align-items: center; gap: 20px;">
+<img src="Figures/process_visualize.png" alt="Marketing analytics process, with visualization highlighted" style="width: 76%; height: auto;" />
+<img src="Figures/hex_dplyr-ggplot2.png" alt="dplyr and ggplot2 tools" style="width: 20%; height: auto;" />
+</div>
 
 ## Motivating Example
 
@@ -37,8 +34,9 @@ Remember that summarizing data is initially all about discovery, the heart of **
 
 How we summarize depends on whether the data is *discrete* or **continuous**.
 
-- Continuous means "forming an unbroken whole; without interruption."
-- Continuous data are also called *quantitative* or *numeric*.
+- Continuous measurements can take values along a range; we use income and credit scores as examples.
+- Numeric data can also be **discrete**, such as purchase counts or star ratings.
+- A numeric storage type in R does not tell us whether a variable is continuous.
 
 ---
 
@@ -46,19 +44,14 @@ How we summarize depends on whether the data is *discrete* or **continuous**.
 ![](Figures/monsters_discrete-continuous.png){width=700px}
 </center>
 
----
-
-```{r}
-library(tidyverse)
-```
-
----
+## Inspect Continuous Variables {.smaller}
 
 What variables are *continuous*? What are their data types?
 
-```{r}
+```{r, message=FALSE}
+library(tidyverse)
 customer_data <- read_csv("customer_data.csv", show_col_types = FALSE)
-glimpse(customer_data)
+glimpse(customer_data, width = 60)
 ```
 
 ## Summarize Continuous Data
@@ -72,14 +65,13 @@ customer_data |>
 
 Note that `summarize()` is more general than `count()` and can accommodate all sort of calculations - similar to `mutate()`. What is the main difference between `summarize()` and `mutate()`?
 
----
+## Your Turn! | Average Income and Credit
 
-- Compute the mean of both `income` and `credit`.
-- We can also compute the **mode**, **median**, **variance**, **standard deviation**, **minimum**, **maximum**, **sum**, etc.
+Use the customer data to display a one-row data frame with the mean income and mean credit score. Name the columns `avg_income` and `avg_credit`.
 
----
+**Expected output:**
 
-```{r}
+```{r, echo=FALSE}
 customer_data |>
   summarize(
     avg_income = mean(income),
@@ -87,11 +79,13 @@ customer_data |>
   )
 ```
 
+We can also compute the **mode**, **median**, **variance**, **standard deviation**, **minimum**, **maximum**, **sum**, etc.
+
 ## Your Turn!
 
 Use the customer data and the filter() and summarize() functions to display a data frame with the minimum, maximum, and median income for married customers.
 
-## Output
+**Expected output:**
 
 ```{r, echo=FALSE}
 customer_data |>
@@ -128,15 +122,7 @@ Recall that {ggplot2} provides a consistent **grammar of graphics** built with *
 
 Let’s plot the **distribution** of income.
 
-```{r eval=FALSE}
-customer_data |> 
-  ggplot(aes(x = income)) +
-  geom_histogram()
-```
-
----
-
-```{r echo=FALSE}
+```{r, fig.width=8, fig.height=3, message=FALSE}
 customer_data |> 
   ggplot(aes(x = income)) +
   geom_histogram()
@@ -228,23 +214,19 @@ customer_data |>
   )
 ```
 
----
+## Counts Are Grouped Summaries {.smaller}
 
-Note how the `group_by()` function is a lot like the `facet_wrap()`, it filters the data by each category in the discrete group variable.
+`group_by()` defines groups for later operations without removing rows; `facet_wrap()` displays groups in separate plot panels.
 
-`count()` is a **wrapper** around a grouped summary using `n()`.
+`count()` is a shortcut for a grouped summary using `n()`. These two expressions produce the same table:
 
----
-
-```{r}
+```{r, results='hide'}
 customer_data |>
   group_by(gender) |>
   summarize(
     n = n()
   )
 ```
-
----
 
 ```{r}
 customer_data |>
@@ -261,10 +243,13 @@ customer_data |>
   summarize(
     n = n(),
     avg_income = mean(income),
-    avg_credit = mean(credit)
+    avg_credit = mean(credit),
+    .groups = "drop"
   ) |> 
   arrange(desc(avg_income))
 ```
+
+`.groups` controls how the result stays grouped—not which groups we summarize.
 
 ---
 
@@ -280,23 +265,18 @@ customer_data |>
 
 We often want to see how a variable changes over time: a **time series**. However, dates and times can be tricky.
 
-```{r eval=FALSE}
+```{r, fig.width=8, fig.height=2.8, warning=FALSE}
 customer_data |> 
   ggplot(aes(x = review_time, y = star_rating)) +
   geom_line()
 ```
 
----
+## Parse Review Dates {.smaller}
 
-```{r echo=FALSE}
-customer_data |> 
-  ggplot(aes(x = review_time, y = star_rating)) +
-  geom_line()
-```
+There's a package for that: {lubridate}.
 
----
-
-There's a package for that!
+<div style="display: flex; align-items: center; gap: 20px;">
+<div style="width: 65%;">
 
 ```{r}
 rating_data <- customer_data |> 
@@ -304,47 +284,28 @@ rating_data <- customer_data |>
   select(review_time, star_rating) |> 
   mutate(review_time = mdy(review_time))
 
-rating_data
+print(rating_data, n = 3)
 ```
 
----
-
-<center>
-![](Figures/monsters_lubridate.png){width=800px}
-</center>
-
----
-
-```{r}
-rating_data |> 
-  ggplot(aes(x = review_time, y = star_rating)) +
-  geom_line()
-```
+</div>
+<div style="width: 31%;">
+<img src="Figures/monsters_lubridate.png" alt="Illustration of the lubridate package for working with dates" style="width: 100%; height: auto;" />
+</div>
+</div>
 
 ## Wait...Why Does This Plot Still Look Bad?
 
-```{r, echo=FALSE}
+```{r, fig.width=8, fig.height=3}
 rating_data |> 
   ggplot(aes(x = review_time, y = star_rating)) +
   geom_line()
 ```
 
-## Visualize Grouped Summaries
+## Visualize Grouped Summaries {.smaller}
 
 Let's summarize the data by a period of time and then plot the time series.
 
-```{r eval=FALSE}
-rating_data |> 
-  mutate(review_year = year(review_time)) |> 
-  group_by(review_year) |> 
-  summarize(avg_star_rating = mean(star_rating)) |> 
-  ggplot(aes(x = review_year, y = avg_star_rating)) +
-  geom_line()
-```
-
----
-
-```{r echo=FALSE}
+```{r, fig.width=8, fig.height=2.8}
 rating_data |> 
   mutate(review_year = year(review_time)) |> 
   group_by(review_year) |> 
@@ -357,15 +318,7 @@ rating_data |>
 
 Just like there are geoms for visualizing continuous or discrete data, there are geoms for visualizing the relationship between continuous and discrete data.
 
-```{r eval=FALSE}
-customer_data |> 
-  ggplot(aes(x = income, y = gender)) +
-  geom_boxplot()
-```
-
----
-
-```{r echo=FALSE}
+```{r, fig.width=8, fig.height=2.7}
 customer_data |> 
   ggplot(aes(x = income, y = gender)) +
   geom_boxplot()
@@ -375,9 +328,9 @@ customer_data |>
 
 Create a box plot of the distribution of credit scores for the married vs. unmarried customers. Include labels and a title!
 
-## Desired Output
+**Expected output:**
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.width=8, fig.height=3}
 
 customer_data |> 
   ggplot(aes(x = credit, y = married)) +
@@ -399,31 +352,23 @@ customer_data |>
        subtitle = 'Married vs. Unmarried Patagonia Customers')
 ```
 
-## We Can Also Use Density Plots
+## We Can Also Use Density Plots {.smaller}
 
-```{r, eval=FALSE}
+```{r, fig.width=8, fig.height=3}
 customer_data |> 
   ggplot(aes(x = income, fill = gender)) +
   geom_density(alpha = 0.5) +
   labs(x = "Income",
        y = "Density",
-       title = "Income Distribution by Marital Status")
-```
-
----
-
-```{r, echo=FALSE}
-customer_data |> 
-  ggplot(aes(x = income, fill = gender)) +
-  geom_density(alpha = 0.5) +
-  labs(x = "Income",
-       y = "Density",
-       title = "Income Distribution by Marital Status")
+       title = "Income Distribution by Gender")
 ```
 
 ## Live Coding
 
-Suppose your client, Patagonia, is interested in interested in increasing customer engagement by offering a promotion to customers who leave a review. Can you uncover any variables that are related to whether a customer is more or less likely to leave a review?
+Suppose your client, Patagonia, is interested in increasing customer engagement by offering a promotion to customers who leave a review. Can you uncover any variables that are related to whether a customer is more or less likely to leave a review?
+
+- What should count as leaving a review for this analysis?
+- Would an observed association tell us whether the promotion will increase engagement? Why or why not?
 
 ---
 
@@ -445,7 +390,8 @@ Suppose your client, Patagonia, is interested in interested in increasing custom
 
 *Supplementary Material*
 
-- *R for Data Science (2e)* Chapters 2 and 19
+- *R for Data Science (2e)*: [10 Exploratory data analysis](https://r4ds.hadley.nz/EDA.html) and [17 Dates and times](https://r4ds.hadley.nz/datetimes.html).
+- Review: [3 Data transformation](https://r4ds.hadley.nz/data-transform.html), section 3.5 Groups, including grouped summaries.
 
 *Artwork by @allison_horst*
 

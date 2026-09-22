@@ -349,3 +349,27 @@ Completion evidence — items 9, 10 and G1: Verified.
 - Final audit: slides/exercise/starter and prior-material reduction Verified
   by recorded source checks; Word visual review User-reported; all requested
   Canvas publishing, rubric reference, GitHub and Pages items Verified.
+
+
+15. Republish user refinements — 2026-09-22.
+Decision: Approve — user explicitly requested committing/pushing all changes,
+replacing the Canvas HTML slides and starter, and verifying the Pages link.
+Status: Verified. User reports rendering and checking starter/Exercise 3 solution.
+Reviewed all changes: removed Motivating Example, revised summary wording,
+escaped the starter heading's vertical bar, refreshed both rendered HTML files,
+and local .Rhistory containing only customer-summary commands. All included
+in content commit 16fda57aa052f10886f23524c234bae44adf4d9f and pushed origin/main.
+HEAD matched origin/main and working tree was clean after content publication.
+All 22 starter R chunks parsed; instructional R code unchanged in this update.
+Replaced Canvas files in course 38688 through Chrome, retaining Published status:
+- 04-Visualize-Continuous-Data.html: 5,602,957 bytes, file 13843715; verified
+  module 3180616 resolves to the new download (5.34 MB displayed).
+- 04-starter-code.qmd: 5,517 bytes, file 13843716; verified module 3180617
+  resolves to the new download (5.39 KB displayed).
+Updated Canvas 04-Slides to:
+https://cdbale.github.io/04-Visualize-Continuous-Data/?v=16fda57#1
+Verified saved link in a fresh Canvas tab and opened that URL: 35 slides, no
+Motivating Example, updated 'across discrete categories' wording, concluding
+Exercise 3 Regional Customer Profiles. No new render, solution upload, or
+assignment edit was needed or performed. Final tracking changes receive a
+separate closeout commit/push, verified in the task response.

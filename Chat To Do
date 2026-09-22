@@ -1,4 +1,4 @@
-LECTURE 04 CLOSEOUT — 2026-09-17
+LECTURE 04 CLOSEOUT — 2026-09-22
 
 SCOPE AND STATUS
 All requested lecture edits and publication steps are complete. User confirmed
@@ -39,7 +39,7 @@ so do not infer assignment identity solely from the nearby lecture heading.
 04-Slides links to https://cdbale.github.io/04-Visualize-Continuous-Data/#1.
 Opened that link: live slides still end with Exercise 4 and lack learning goals.
 
-FINAL CHECKLIST AUDIT — 2026-09-17
+HISTORICAL CHECKLIST AUDIT — 2026-09-17
 1. Slides: Verified. User-rendered HTML published; 36 slides, learning goals,
    grouping clarification, and concluding Exercise 3 confirmed live.
 2. Exercise: Verified source alignment; solution visual review User-reported.
@@ -56,6 +56,18 @@ FINAL CHECKLIST AUDIT — 2026-09-17
    will be committed and pushed as the closeout step.
 9. Pages/Canvas hyperlink: Verified current deck through saved versioned URL:
    https://cdbale.github.io/04-Visualize-Continuous-Data/?v=fdbb5b3#1
+
+LATEST PUBLICATION AUDIT — 2026-09-22
+User requested all local changes pushed and only the HTML/starter files
+replaced on Canvas, plus the updated Pages link. Item 15 is Verified in
+Chat Completed. Content commit 16fda57 pushed; both HTML files reflect the
+user's 35-slide render. Starter: all 22 chunks parse; code unchanged.
+Canvas HTML file 13843715 and starter file 13843716 are Published; existing
+module links resolve to new downloads. Saved 04-Slides URL verified in a
+fresh tab and opened successfully:
+https://cdbale.github.io/04-Visualize-Continuous-Data/?v=16fda57#1
+User-reported starter/solution review accepted. No exercise/solution changes
+were requested or made in this refresh. All requested work is complete.
 
 UNFINISHED ITEMS
 None. Final closeout commit/push verification is recorded in the task response.

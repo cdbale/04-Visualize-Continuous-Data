@@ -31,7 +31,7 @@ customer_data |>
   summarize(avg_income = mean(income))
 ```
 
-### Your Turn! | Average Income and Credit
+### Your Turn! \| Average Income and Credit
 
 ```{r}
 

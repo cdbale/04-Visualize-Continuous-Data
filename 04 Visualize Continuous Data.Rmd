@@ -21,10 +21,6 @@ output:
 <img src="Figures/hex_dplyr-ggplot2.png" alt="dplyr and ggplot2 tools" style="width: 20%; height: auto;" />
 </div>
 
-## Motivating Example
-
-Patagonia management was pleased with your previous report on customers in the South region. Now, they have requested that you provide further analysis of the income and credit scores of their customers. What kind of graphs or charts would provide good visualizations of these variables?
-
 ## Continuous Data
 
 Remember that summarizing data is initially all about discovery, the heart of **exploratory data analysis**.
@@ -63,7 +59,7 @@ customer_data |>
   summarize(avg_income = mean(income))
 ```
 
-Note that `summarize()` is more general than `count()` and can accommodate all sort of calculations - similar to `mutate()`. What is the main difference between `summarize()` and `mutate()`?
+Note that `summarize()` can accommodate all sort of calculations - similar to `mutate()`. What is the main difference between `summarize()` and `mutate()`?
 
 ## Your Turn! | Average Income and Credit
 
@@ -202,7 +198,7 @@ customer_data |>
 
 ## Summarize Continuous and Discrete Data
 
-**Grouped summaries** provide a powerful solution for computing continuous statistics by discrete categories.
+**Grouped summaries** provide a powerful solution for computing continuous statistics across discrete categories.
 
 ```{r}
 customer_data |>
